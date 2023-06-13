@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class JumpController : MonoBehaviour
 {
-    Rigidbody2D rb;
-
+    #region SerializeField
     [SerializeField] int jumpPower;
+    #endregion
+
+    #region private
+    Rigidbody2D rb;
+    #endregion
 
     private void Start()
     {

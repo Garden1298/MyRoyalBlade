@@ -4,23 +4,19 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
-    //----SerializeField----//
+    #region SerializeField
     [Header("Particle")]
-    [SerializeField]
-    ParticleSystem movementParticle; // 움직일때 사용되는 파티클
-    [SerializeField]
-    ParticleSystem fallParticle; // 착지할때 사용되는 파티클
-    [SerializeField, Range(0, 10)]
-    int occurAfterVelocity; // 파티클이 생성되기 위한 스피드 값
-    [SerializeField, Range(0f, 0.2f)]
-    float particleFormationPeriod; // 파티클 생성 주기
-    //----SerializeField----//
+    [SerializeField] ParticleSystem movementParticle; // 움직일때 사용되는 파티클
+    [SerializeField] ParticleSystem fallParticle; // 착지할때 사용되는 파티클
+    [SerializeField, Range(0, 10)] int occurAfterVelocity; // 파티클이 생성되기 위한 스피드 값
+    [SerializeField, Range(0f, 0.2f)] float particleFormationPeriod; // 파티클 생성 주기
+    #endregion
 
-    //----private----//
+    #region private
     Rigidbody2D rb;
     float counter; // 딜레이
     bool isOnGround; // 땅과 접촉 유무
-    //----private----//
+    #endregion
 
     private void Start()
     {
