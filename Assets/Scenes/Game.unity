@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 187818088}
   meleeSpeed: 0.35
-  damage: 50
+  damage: 100
 --- !u!1 &512069863
 GameObject:
   m_ObjectHideFlags: 0
