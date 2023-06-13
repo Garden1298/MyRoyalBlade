@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class ParticleController : MonoBehaviour
 {
+    //----SerializeField----//
     [Header("Particle")]
     [SerializeField]
     ParticleSystem movementParticle; // 움직일때 사용되는 파티클
+    [SerializeField]
+    ParticleSystem fallParticle; // 착지할때 사용되는 파티클
     [SerializeField, Range(0, 10)]
-    int occurAfterVelocity; // dustFormationPeriod에 도달하기 위한 스피드 값
+    int occurAfterVelocity; // 파티클이 생성되기 위한 스피드 값
     [SerializeField, Range(0f, 0.2f)]
-    float dustFormationPeriod; // 파티클 주기
+    float particleFormationPeriod; // 파티클 생성 주기
+    //----SerializeField----//
 
+    //----private----//
     Rigidbody2D rb;
-
-    float counter;
+    float counter; // 딜레이
+    bool isOnGround; // 땅과 접촉 유무
+    //----private----//
 
     private void Start()
     {
@@ -25,14 +31,32 @@ public class ParticleController : MonoBehaviour
     {
         counter += Time.deltaTime;
 
-        if(Mathf.Abs(rb.velocity.y)>occurAfterVelocity)
+        //파티클 생성 조건
+        if (!isOnGround && Mathf.Abs(rb.velocity.y) > occurAfterVelocity)
         {
-            if(counter> dustFormationPeriod)
+            if (counter > particleFormationPeriod)
             {
                 //파티클 실행하기
                 movementParticle.Play();
                 counter = 0;
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Ground"))
+        {
+            fallParticle.Play();
+            isOnGround = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ground"))
+        {
+            isOnGround = false;
         }
     }
 }
