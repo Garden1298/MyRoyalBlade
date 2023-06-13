@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class PlayerAttackController : MonoBehaviour
 {
+    #region SerializeField
     [SerializeField] Animator anim;
     [SerializeField] float meleeSpeed;
     [SerializeField] float damage;
+    #endregion
 
+    #region private
     float timeUntilMelee;//counter
+    #endregion
 
     private void Update()
     {
@@ -31,7 +35,7 @@ public class PlayerAttackController : MonoBehaviour
     {
         if (collision.tag == "Block")
         {
-            //collision.GetComponent<Block>().TakeDamage(damage);
+            collision.GetComponent<Block>().TakeDamage(damage);
             Debug.Log("°ø°ÝÇÔ");
         }
     }
