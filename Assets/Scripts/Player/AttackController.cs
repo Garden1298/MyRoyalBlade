@@ -38,11 +38,11 @@ public class AttackController : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.tag == "Block")
+        if (other.tag == "Block")
         {
-            collision.GetComponent<Block>().TakeDamage(damage);
+            other.GetComponent<Block>().TakeDamage(damage);
         }
     }
 }

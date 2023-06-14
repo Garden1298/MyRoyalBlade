@@ -7,7 +7,8 @@ public class UIController : MonoBehaviour
 {
     #region SerializeField
     [Header("Jump")]
-    [SerializeField] Button btn_Jump; //점프 버튼
+    [SerializeField] Button btn_Jump; // 점프 버튼
+    [SerializeField] Slider slider_Jump; // 점프 슬라이더
     [SerializeField] JumpController jumpController;
     
     [Header("Attack")]
@@ -45,7 +46,7 @@ public class UIController : MonoBehaviour
         
         if(jumpAmount == 100)
         {
-            jumpAmount = 0;
+            slider_Jump.gameObject.SetActive(true);
         }
     }
     
@@ -58,5 +59,15 @@ public class UIController : MonoBehaviour
         {
             attackAmount = 0;
         }
+    }
+
+    public void ResetJumpAmount()
+    {
+        jumpAmount = 0;
+    }
+
+    public void ResetAttackAmount()
+    {
+        attackAmount = 0;
     }
 }

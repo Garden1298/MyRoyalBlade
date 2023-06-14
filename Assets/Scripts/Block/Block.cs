@@ -44,10 +44,15 @@ public class Block : MonoBehaviour
 
         if (health <= 0)
         {
-            Instantiate(explosionParticle,transform.position, Quaternion.identity);
-            //Destroy(gameObject);
-            blockController.Push(this);
-            this.transform.position = originPos;
+            DestroyBlock();
         }
+    }
+
+    //Á×À½
+    public void DestroyBlock()
+    {
+        Instantiate(explosionParticle, transform.position, Quaternion.identity);
+        blockController.Push(this);
+        this.transform.position = originPos;
     }
 }

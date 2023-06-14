@@ -16,8 +16,9 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region public
-    public PlayerController playerController;
     public bool isOnGround;
+    public PlayerController playerController;
+    public BoxCollider2D playerCollider;
     #endregion
 
     private void Awake()
@@ -28,5 +29,11 @@ public class PlayerController : MonoBehaviour
             return;
         }
         instance = this;
+    }
+
+    private void Start()
+    {
+        playerController = this.GetComponent<PlayerController>();
+        playerCollider = this.GetComponent<BoxCollider2D>();
     }
 }

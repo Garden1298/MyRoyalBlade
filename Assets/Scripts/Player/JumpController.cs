@@ -7,6 +7,7 @@ public class JumpController : MonoBehaviour
 {
     #region SerializeField
     [SerializeField] int jumpPower; // 점프 가중치
+    [SerializeField] PlayerController playerController;
     #endregion
 
     #region private
@@ -16,6 +17,7 @@ public class JumpController : MonoBehaviour
 
     private void Start()
     {
+        playerController = GetComponent<PlayerController>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -31,5 +33,26 @@ public class JumpController : MonoBehaviour
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+    }
+
+    public void SuperJump()
+    {
+        playerController.playerCollider.isTrigger = true;
+        rb.velocity = new Vector2(rb.velocity.x, jumpPower*1.5f);
+        StartCoroutine(IsTriggerOff());
+    }
+
+    private IEnumerator IsTriggerOff()
+    {
+        yield return new WaitForSeconds(1f);
+        playerController.playerCollider.isTrigger = false;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Block")
+        {
+            collision.GetComponent<Block>().DestroyBlock();
+        }
     }
 }
