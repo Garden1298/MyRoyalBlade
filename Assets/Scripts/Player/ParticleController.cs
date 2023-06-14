@@ -48,6 +48,7 @@ public class ParticleController : MonoBehaviour
             fallParticle.Play();
             isOnGround = true;
             playerController.isOnGround = true;
+            playerController.anim.SetTrigger("Land");
         }
     }
 

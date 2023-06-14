@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool isOnGround;
     public PlayerController playerController;
     public BoxCollider2D playerCollider;
+    public Animator anim;
     #endregion
 
     private void Awake()
@@ -35,5 +36,6 @@ public class PlayerController : MonoBehaviour
     {
         playerController = this.GetComponent<PlayerController>();
         playerCollider = this.GetComponent<BoxCollider2D>();
+        anim = this.GetComponent<Animator>();
     }
 }

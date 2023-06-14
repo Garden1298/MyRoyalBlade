@@ -6,6 +6,7 @@ using UnityEngine;
 public class JumpController : MonoBehaviour
 {
     #region SerializeField
+    [SerializeField] Animator anim;
     [SerializeField] int jumpPower; // 점프 가중치
     [SerializeField] PlayerController playerController;
     #endregion
@@ -24,21 +25,25 @@ public class JumpController : MonoBehaviour
     public void Update()
     {
         //테스트용
-        if(Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
+
         }
     }
 
     public void Jump()
     {
+        anim.SetTrigger("Jump");
         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
     }
 
     public void SuperJump()
     {
+        anim.SetTrigger("Jump");
+
         playerController.playerCollider.isTrigger = true;
-        rb.velocity = new Vector2(rb.velocity.x, jumpPower*1.5f);
+        rb.velocity = new Vector2(rb.velocity.x, jumpPower * 1.5f);
         StartCoroutine(IsTriggerOff());
     }
 
