@@ -71,11 +71,9 @@ public class BlockController : MonoBehaviour
     {
         int stage = PlayerPrefs.GetInt("Stage", 0);
         int curCount = Random.Range(6, 8) + stage;
-        Debug.Log("curCount:" + curCount);
 
         for (int i = 0; i < curCount; i++)
         {
-            Debug.Log(i);
             Pop();
         }
 

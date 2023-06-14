@@ -48,7 +48,6 @@ public class Block : MonoBehaviour
             //Destroy(gameObject);
             blockController.Push(this);
             this.transform.position = originPos;
-            Debug.Log("블럭 삭제");
         }
     }
 }

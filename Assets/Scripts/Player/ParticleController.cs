@@ -13,6 +13,7 @@ public class ParticleController : MonoBehaviour
     #endregion
 
     #region private
+    PlayerController playerController;
     Rigidbody2D rb;
     float counter; // µô·¹ÀÌ
     bool isOnGround; // ¶¥°ú Á¢ÃË À¯¹«
@@ -20,6 +21,7 @@ public class ParticleController : MonoBehaviour
 
     private void Start()
     {
+        playerController = PlayerController.Instance.playerController;
         rb = transform.root.GetComponent<Rigidbody2D>();
     }
 
@@ -45,6 +47,7 @@ public class ParticleController : MonoBehaviour
         {
             fallParticle.Play();
             isOnGround = true;
+            playerController.isOnGround = true;
         }
     }
 
@@ -53,6 +56,7 @@ public class ParticleController : MonoBehaviour
         if (collision.CompareTag("Ground"))
         {
             isOnGround = false;
+            playerController.isOnGround = false;
         }
     }
 }

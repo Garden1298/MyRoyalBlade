@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class JumpController : MonoBehaviour
 {
     #region SerializeField
@@ -9,6 +10,7 @@ public class JumpController : MonoBehaviour
     #endregion
 
     #region private
+    bool doJump;
     Rigidbody2D rb;
     #endregion
 
@@ -17,11 +19,8 @@ public class JumpController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    private void Update()
+    public void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpPower);
-        }
+        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
     }
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttackController : MonoBehaviour
+public class AttackController : MonoBehaviour
 {
     #region SerializeField
     [SerializeField] Animator anim;
@@ -18,11 +18,11 @@ public class PlayerAttackController : MonoBehaviour
     {
         if (timeUntilMelee <= 0f)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                anim.SetTrigger("Attack");
-                timeUntilMelee = meleeSpeed;
-            }
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    anim.SetTrigger("Attack");
+            //    timeUntilMelee = meleeSpeed;
+            //}
         }
         else
         {
@@ -36,7 +36,6 @@ public class PlayerAttackController : MonoBehaviour
         if (collision.tag == "Block")
         {
             collision.GetComponent<Block>().TakeDamage(damage);
-            Debug.Log("°ø°ÝÇÔ");
         }
     }
 }
