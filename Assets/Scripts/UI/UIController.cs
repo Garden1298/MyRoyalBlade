@@ -7,26 +7,33 @@ public class UIController : MonoBehaviour
 {
     #region SerializeField
     [Header("Jump")]
-    [SerializeField] Button btn_Jump;
-    [SerializeField]JumpController jumpController;
+    [SerializeField] Button btn_Jump; //점프 버튼
+    [SerializeField] JumpController jumpController;
+    
+    [Header("Attack")]
+    [SerializeField] Button btn_Attack; // 공격 버튼
+    [SerializeField] AttackController attackController;
     #endregion
 
     #region private
     PlayerController playerController;
-    Image jumpBar;
-    int jumpAmount;
+    Image jumpBar; // 점프 버튼의 이미지
+    Image attackBar; // 공격 버튼의 이미지
+    int jumpAmount; // 슈퍼 점프 게이지
+    int attackAmount; //슈퍼 공격 게이지
     #endregion
 
     private void Start()
     {
         playerController = PlayerController.Instance.playerController;
         jumpBar = btn_Jump.GetComponent<Image>();
+        attackBar = btn_Attack.GetComponent<Image>();
     }
 
     private void Update()
     {
-        Debug.Log("amount:"+jumpAmount);
         jumpBar.fillAmount = jumpAmount*0.01f;
+        attackBar.fillAmount = attackAmount*0.01f;
     }
 
     public void BtnJump()
@@ -39,6 +46,17 @@ public class UIController : MonoBehaviour
         if(jumpAmount == 100)
         {
             jumpAmount = 0;
+        }
+    }
+    
+    public void BtnAttack()
+    {
+        attackAmount += 10;
+        attackController.Attack();
+        
+        if(attackAmount == 100)
+        {
+            attackAmount = 0;
         }
     }
 }

@@ -11,23 +11,30 @@ public class AttackController : MonoBehaviour
     #endregion
 
     #region private
-    float timeUntilMelee;//counter
+    float timeUntilMelee; // counter
+    bool doAttack; // 공격 가능 유무
     #endregion
 
     private void Update()
     {
         if (timeUntilMelee <= 0f)
         {
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    anim.SetTrigger("Attack");
-            //    timeUntilMelee = meleeSpeed;
-            //}
+            if (doAttack)
+            {
+                anim.SetTrigger("Attack");
+                timeUntilMelee = meleeSpeed;
+                doAttack = false;
+            }
         }
         else
         {
             timeUntilMelee -= Time.deltaTime;
         }
+    }
+
+    public void Attack()
+    {
+        doAttack = true;
     }
 
 
