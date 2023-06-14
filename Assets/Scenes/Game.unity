@@ -394,7 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 187818088}
   meleeSpeed: 0.35
-  damage: 100
+  damage: 50
 --- !u!1 &512069863
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,7 +707,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5566,7 +5566,8 @@ MonoBehaviour:
   p_Block: {fileID: 293691340448771039, guid: bd6b78828609ddb46be2821dee095f50, type: 3}
   blockheight: 2
   blockGenerateOffset: 1
-  count: 0
+  count: 20
+  blockController: {fileID: 586698793}
 --- !u!1 &693870999
 GameObject:
   m_ObjectHideFlags: 0
@@ -5954,7 +5955,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0

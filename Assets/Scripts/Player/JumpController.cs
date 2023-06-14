@@ -5,7 +5,7 @@ using UnityEngine;
 public class JumpController : MonoBehaviour
 {
     #region SerializeField
-    [SerializeField] int jumpPower;
+    [SerializeField] int jumpPower; // 점프 가중치
     #endregion
 
     #region private
