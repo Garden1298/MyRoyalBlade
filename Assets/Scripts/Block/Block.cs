@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Block : MonoBehaviour
 {
     #region SerializeField
+    [SerializeField] float maxHealth; //블럭의 최대 체력
     [SerializeField] float health; // 블럭의 체력
-    [SerializeField] int jumpPower;
-    [SerializeField] ParticleSystem explosionParticle; // 블럭이 삭제될때 사용되는 파티클
+    //[SerializeField] int jumpPower;
+    [SerializeField] ParticleSystem p_explosionParticle; // 블럭이 삭제될때 사용되는 파티클
+    [SerializeField] GameObject p_damageText; // 받은 공격력을 출력하는 텍스트
     #endregion
 
     #region private
@@ -40,7 +43,8 @@ public class Block : MonoBehaviour
     {
         health -= damage;
 
-        rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
+        ShowDamage(damage);
 
         if (health <= 0)
         {
@@ -48,11 +52,24 @@ public class Block : MonoBehaviour
         }
     }
 
+    private void ShowDamage(float damage)
+    {
+        // 데미지 텍스트 생성
+        GameObject text = Instantiate(p_damageText, transform.position, Quaternion.identity);
+        text.GetComponent<TMP_Text>().text = damage.ToString();
+    }
+
     //죽음
     public void DestroyBlock()
     {
-        Instantiate(explosionParticle, transform.position, Quaternion.identity);
+        //파티클 생성
+        Instantiate(p_explosionParticle, transform.position, Quaternion.identity);
+
+        //초기화
+        health = maxHealth;
+        transform.position = originPos;
+
+        //오브젝트풀에 넣기
         blockController.Push(this);
-        this.transform.position = originPos;
     }
 }

@@ -20,8 +20,10 @@ public class SuperJumpSlider : MonoBehaviour
     {
         if(slider_jump.value == 1)
         {
-            Debug.Log("superjump");
+            // 슈퍼 점프
             jumpController.SuperJump();
+
+            //초기화
             slider_jump.value = 0;
             slider_jump.gameObject.SetActive(false);
             controller.ResetJumpAmount();

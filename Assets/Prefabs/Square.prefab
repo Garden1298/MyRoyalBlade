@@ -47,9 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2425405bb1343704dace27da8b39e037, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 100
   health: 100
-  jumpPower: 2
-  explosionParticle: {fileID: 3861788497379656130, guid: 2942e104e82079e488cd82e030a9e9b0, type: 3}
+  p_explosionParticle: {fileID: 3861788497379656130, guid: 2942e104e82079e488cd82e030a9e9b0, type: 3}
+  p_damageText: {fileID: 4501086024673575283, guid: ec973ae94654d584aa27d92c7c50df86, type: 3}
 --- !u!212 &293691340448771034
 SpriteRenderer:
   m_ObjectHideFlags: 0

@@ -95,8 +95,11 @@ public class BlockController : MonoBehaviour
         blockStack.Push(block);
 
         leftBlockCnt--;
+
+        // 남은 블럭이 없으면 다음 레벨 시작 & 블럭 생성
         if(leftBlockCnt==0)
         {
+            Debug.Log("level start");
             StartLevel();
         }
     }
