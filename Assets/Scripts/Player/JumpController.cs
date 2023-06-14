@@ -19,6 +19,15 @@ public class JumpController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public void Update()
+    {
+        //테스트용
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            Jump();
+        }
+    }
+
     public void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpPower);

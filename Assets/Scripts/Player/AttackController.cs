@@ -19,7 +19,7 @@ public class AttackController : MonoBehaviour
     {
         if (timeUntilMelee <= 0f)
         {
-            if (doAttack)
+            if (doAttack||Input.GetKeyDown(KeyCode.A))        //GetKeyDown : 테스트용
             {
                 anim.SetTrigger("Attack");
                 timeUntilMelee = meleeSpeed;
