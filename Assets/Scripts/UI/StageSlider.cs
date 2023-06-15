@@ -25,4 +25,5 @@ public class StageSlider : MonoBehaviour
             gameController.SetText("Clear!");
         }
     }
+    
 }
