@@ -53,7 +53,7 @@ public class BlockController : MonoBehaviour
     // stage에 따라 블럭 생성
     private void BlockGenerator()
     {
-        for (int i = count-1; i >= 0; i--)
+        for (int i = count - 1; i >= 0; i--)
         {
             //생성할 블록 위치 {(블록 높이 * i) + (오프셋 * i)}
             Vector2 spawnPosition = new Vector2(blockGroup.transform.position.x,
@@ -85,11 +85,8 @@ public class BlockController : MonoBehaviour
     // 쉴드에 맞았을때 블럭들을 위로 밀침
     public void HitShield()
     {
-        Block[] blockArray = curBlock.ToArray();
-
-        foreach(Block block in blockArray)
+        foreach(Block block in curBlock)
         {
-            if (!block.gameObject.activeSelf) continue;
             block.HitShield();
         }
     }

@@ -81,14 +81,6 @@ public class Block : MonoBehaviour
         }
     }
 
-    // 데미지 출력
-    private void ShowDamage(float damage)
-    {
-        // 데미지 텍스트 생성
-        GameObject text = Instantiate(p_damageText, transform.position, Quaternion.identity);
-        text.GetComponent<TMP_Text>().text = damage.ToString();
-    }
-
     // 죽음
     public void DestroyBlock()
     {
@@ -103,6 +95,14 @@ public class Block : MonoBehaviour
         transform.position = originPos;
 
         //오브젝트풀에 넣기
-        blockController.Push(this);
+        Push();
+    }
+
+    // 데미지 출력
+    private void ShowDamage(float damage)
+    {
+        // 데미지 텍스트 생성
+        GameObject text = Instantiate(p_damageText, transform.position, Quaternion.identity);
+        text.GetComponent<TMP_Text>().text = damage.ToString();
     }
 }

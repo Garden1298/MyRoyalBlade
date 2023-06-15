@@ -26,8 +26,9 @@ public class GuardController : MonoBehaviour
     }
 
     // ΩØµÂ «ÿ¡¶
-    public void DetachGuard()
+    private IEnumerator DetachGuard()
     {
+        yield return new WaitForSeconds(0.5f);
         guard.SetActive(false);
         isGuard = false;
     }
@@ -38,7 +39,7 @@ public class GuardController : MonoBehaviour
         {
             BlockController.Instance.HitShield();
             jumpController.PreventJump();
-            DetachGuard();
+            StartCoroutine(DetachGuard());
         }
     }
 }

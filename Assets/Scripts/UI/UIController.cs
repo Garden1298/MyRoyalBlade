@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
     #region private
     PlayerController playerController;
     Image jumpBar; // 점프 버튼의 이미지
+    Image guardBar; // 방어 버튼의 이미지
     Image attackBar; // 공격 버튼의 이미지
     int jumpAmount; // 슈퍼 점프 게이지
     int attackAmount; //슈퍼 공격 게이지
@@ -32,6 +33,7 @@ public class UIController : MonoBehaviour
     {
         playerController = PlayerController.Instance.playerController;
         jumpBar = btn_Jump.GetComponent<Image>();
+        guardBar = btn_Guard.GetComponent<Image>();
         attackBar = btn_Attack.GetComponent<Image>();
     }
 
@@ -39,6 +41,11 @@ public class UIController : MonoBehaviour
     {
         jumpBar.fillAmount = jumpAmount * 0.01f;
         attackBar.fillAmount = attackAmount * 0.01f;
+
+        if(guardBar.fillAmount<1)
+        {
+            guardBar.fillAmount += Time.deltaTime * 0.01f;
+        }
     }
 
     public void BtnJump()
@@ -56,15 +63,19 @@ public class UIController : MonoBehaviour
 
     public void BtnGuard()
     {
-        guardController.AttachGuard();
+        if (guardBar.fillAmount == 1)
+        {
+            guardController.AttachGuard();
+            guardBar.fillAmount = 0;
+        }
     }
 
     public void BtnAttack()
     {
         attackAmount += 10;
         attackController.Attack();
-        
-        if(attackAmount == 100)
+
+        if (attackAmount == 100)
         {
             attackAmount = 0;
         }
