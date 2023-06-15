@@ -14,14 +14,40 @@ public class Block : MonoBehaviour
     [SerializeField] ScoreController scoreController; // 점수 컨트롤러
     #endregion
 
+
     #region private
     Vector2 originPos;
     BlockController blockController;
     #endregion
 
+    #region public
+    public bool isFalling = true;
+    #endregion
+
     private void Update()
     {
-        transform.Translate(Vector2.down * speed * Time.deltaTime);
+        if (isFalling)
+        {
+            transform.Translate(Vector2.down * speed * Time.deltaTime);
+        }
+        else
+        {
+            transform.Translate(Vector2.up * speed * Time.deltaTime);
+            StartCoroutine(StartTranslationDown());
+        }
+
+    }
+
+    public void HitShield()
+    {
+        Debug.Log("block:hitShield");
+        isFalling = false;
+    }
+
+    private IEnumerator StartTranslationDown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        isFalling = true;
     }
 
     // (오브젝트 풀링) 블럭 생성
@@ -53,6 +79,8 @@ public class Block : MonoBehaviour
         {
             DestroyBlock();
         }
+
+        Debug.Log(health);
     }
 
     // 데미지 출력

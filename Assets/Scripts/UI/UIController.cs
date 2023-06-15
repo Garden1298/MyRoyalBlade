@@ -10,7 +10,11 @@ public class UIController : MonoBehaviour
     [SerializeField] Button btn_Jump; // 점프 버튼
     [SerializeField] Slider slider_Jump; // 점프 슬라이더
     [SerializeField] JumpController jumpController;
-    
+
+    [Header("Guard")]
+    [SerializeField] Button btn_Guard; // 방어 버튼
+    [SerializeField] GuardController guardController;
+
     [Header("Attack")]
     [SerializeField] Button btn_Attack; // 공격 버튼
     [SerializeField] AttackController attackController;
@@ -33,23 +37,28 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        jumpBar.fillAmount = jumpAmount*0.01f;
-        attackBar.fillAmount = attackAmount*0.01f;
+        jumpBar.fillAmount = jumpAmount * 0.01f;
+        attackBar.fillAmount = attackAmount * 0.01f;
     }
 
     public void BtnJump()
     {
         if (!playerController.isOnGround) return;
-     
+
         jumpAmount += 10;
         jumpController.Jump();
-        
-        if(jumpAmount == 100)
+
+        if (jumpAmount == 100)
         {
             slider_Jump.gameObject.SetActive(true);
         }
     }
-    
+
+    public void BtnGuard()
+    {
+        guardController.AttachGuard();
+    }
+
     public void BtnAttack()
     {
         attackAmount += 10;

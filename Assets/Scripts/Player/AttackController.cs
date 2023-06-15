@@ -42,6 +42,7 @@ public class AttackController : MonoBehaviour
     {
         if (other.tag == "Block")
         {
+            Debug.Log("attack");
             other.GetComponent<Block>().TakeDamage(damage);
         }
     }

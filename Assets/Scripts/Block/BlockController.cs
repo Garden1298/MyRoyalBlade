@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class BlockController : MonoBehaviour
@@ -25,6 +26,7 @@ public class BlockController : MonoBehaviour
 
     #region private
     Stack<Block> blockStack = new Stack<Block>();
+    Queue<Block> curBlock = new Queue<Block>();
     Quaternion QI = Quaternion.identity;
     int leftBlockCnt = 0;
     #endregion
@@ -70,7 +72,7 @@ public class BlockController : MonoBehaviour
     private void StartLevel()
     {
         int stage = PlayerPrefs.GetInt("Stage", 0);
-        int curCount = Random.Range(6, 8) + stage;
+        int curCount = UnityEngine.Random.Range(6, 8) + stage;
 
         for (int i = 0; i < curCount; i++)
         {
@@ -80,11 +82,24 @@ public class BlockController : MonoBehaviour
         leftBlockCnt = curCount;
     }
 
+    // 쉴드에 맞았을때 블럭들을 위로 밀침
+    public void HitShield()
+    {
+        Block[] blockArray = curBlock.ToArray();
+
+        foreach(Block block in blockArray)
+        {
+            if (!block.gameObject.activeSelf) continue;
+            block.HitShield();
+        }
+    }
+
     // (오브젝트 풀링) 스택에서 꺼내고 setactive를 true로 바꿈
     public GameObject Pop()
     {
         Block block = blockStack.Pop();
         block.gameObject.SetActive(true);
+        curBlock.Enqueue(block);
         return block.gameObject;
     }
 
@@ -93,6 +108,7 @@ public class BlockController : MonoBehaviour
     {
         block.gameObject.SetActive(false);
         blockStack.Push(block);
+        curBlock.Dequeue();
 
         leftBlockCnt--;
 
