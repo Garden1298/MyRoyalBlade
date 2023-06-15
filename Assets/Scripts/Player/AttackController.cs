@@ -8,6 +8,7 @@ public class AttackController : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] float meleeSpeed;
     [SerializeField] float damage;
+    [SerializeField] GameObject superAttackArea;
     #endregion
 
     #region private
@@ -21,7 +22,6 @@ public class AttackController : MonoBehaviour
         {
             if (doAttack||Input.GetKeyDown(KeyCode.A))        //GetKeyDown : 테스트용
             {
-                anim.SetTrigger("Attack");
                 timeUntilMelee = meleeSpeed;
                 doAttack = false;
             }
@@ -34,7 +34,22 @@ public class AttackController : MonoBehaviour
 
     public void Attack()
     {
+        anim.SetTrigger("Attack");
         doAttack = true;
+    }
+
+    public void SuperAttack()
+    {
+        anim.SetTrigger("SuperAttack");
+        superAttackArea.SetActive(true);
+        doAttack = true;
+        StartCoroutine(SuperAttackOff());
+    }
+
+    private IEnumerator SuperAttackOff()
+    {
+        yield return new WaitForSeconds(1f);
+        superAttackArea.SetActive(false);
     }
 
 

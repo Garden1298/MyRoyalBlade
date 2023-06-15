@@ -8,7 +8,7 @@ public class UIController : MonoBehaviour
     #region SerializeField
     [Header("Jump")]
     [SerializeField] Button btn_Jump; // 점프 버튼
-    [SerializeField] Slider slider_Jump; // 점프 슬라이더
+    [SerializeField] Slider slider_Jump; // 특수 점프 슬라이더
     [SerializeField] JumpController jumpController;
 
     [Header("Guard")]
@@ -17,6 +17,7 @@ public class UIController : MonoBehaviour
 
     [Header("Attack")]
     [SerializeField] Button btn_Attack; // 공격 버튼
+    [SerializeField] Slider slider_Attack; // 특수 공격 슬라이더
     [SerializeField] AttackController attackController;
     #endregion
 
@@ -77,7 +78,7 @@ public class UIController : MonoBehaviour
 
         if (attackAmount == 100)
         {
-            attackAmount = 0;
+           slider_Attack.gameObject.SetActive(true);
         }
     }
 
