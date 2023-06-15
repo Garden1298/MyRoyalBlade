@@ -72,9 +72,6 @@ public class BlockController : MonoBehaviour
     // level에 따른 블럭 생성
     private void StartLevel()
     {
-        Debug.Log(StageController.Instance);
-        Debug.Log(PlayerController.Instance);
-
         int curCount = UnityEngine.Random.Range(6, 8) + StageController.Instance.Stage;
         curCount = Mathf.Clamp(curCount, 6, count);
 

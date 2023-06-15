@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthController : MonoBehaviour
 {
@@ -35,9 +36,17 @@ public class HealthController : MonoBehaviour
             // 마지막으로 남은 하트였다면 게임 오버
             if (health <= 0)
             {
-                Debug.Log("gameover");
+                GameOver();
                 return;
             }
         }
+    }
+
+    private void GameOver()
+    {
+        // 현재 씬 저장
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // 현재 씬 로드
+        SceneManager.LoadScene(currentSceneIndex);
     }
 }
