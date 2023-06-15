@@ -45,7 +45,7 @@ public class UIController : MonoBehaviour
 
         if(guardBar.fillAmount<1)
         {
-            guardBar.fillAmount += Time.deltaTime * 0.01f;
+            guardBar.fillAmount += Time.deltaTime * 0.05f;
         }
     }
 
@@ -53,7 +53,7 @@ public class UIController : MonoBehaviour
     {
         if (!playerController.isOnGround) return;
 
-        jumpAmount += 10;
+        jumpAmount += 20;
         jumpController.Jump();
 
         if (jumpAmount == 100)

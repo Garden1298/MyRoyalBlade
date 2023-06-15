@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameController : MonoBehaviour
 {
     #region SerializeField
     [SerializeField] GameObject panel_pause;
+    [SerializeField] TMP_Text text;
     #endregion
 
     #region private
@@ -15,6 +18,7 @@ public class GameController : MonoBehaviour
     private void Start()
     {
         PauseGame();
+        SetText("GameStart?");
     }
 
     public void PauseGame()
@@ -26,8 +30,28 @@ public class GameController : MonoBehaviour
 
     public void ResumeGame()
     {
-        isPaused = false;
-        Time.timeScale = 1f;
-        panel_pause.SetActive(false);
+        if (text.text == "Resume?" || text.text == "GameStart?")
+        {
+            isPaused = false;
+            Time.timeScale = 1f;
+            panel_pause.SetActive(false);
+        }
+        else
+        {
+            GameOver();
+        }
+    }
+
+    private void GameOver()
+    {
+        // ÇöÀç ¾À ÀúÀå
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        // ÇöÀç ¾À ·Îµå
+        SceneManager.LoadScene(currentSceneIndex);
+    }
+
+    public void SetText(string text)
+    {
+        this.text.text = text;
     }
 }

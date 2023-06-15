@@ -8,6 +8,7 @@ public class HealthController : MonoBehaviour
     #region SerializeField
     [SerializeField] GameObject[] hearts; // 플레이어의 생명 수
     [SerializeField] GuardController guardController;
+    [SerializeField] GameController gameController;
     #endregion
 
     #region private
@@ -36,17 +37,11 @@ public class HealthController : MonoBehaviour
             // 마지막으로 남은 하트였다면 게임 오버
             if (health <= 0)
             {
-                GameOver();
+                gameController.PauseGame();
+                gameController.SetText("GameOver");
                 return;
             }
         }
     }
-
-    private void GameOver()
-    {
-        // 현재 씬 저장
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        // 현재 씬 로드
-        SceneManager.LoadScene(currentSceneIndex);
-    }
 }
+

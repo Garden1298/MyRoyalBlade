@@ -12,7 +12,7 @@ public class JumpController : MonoBehaviour
     #endregion
 
     #region private
-    bool doJump;
+    bool isSuperJump;
     Rigidbody2D rb;
     #endregion
 
@@ -40,6 +40,7 @@ public class JumpController : MonoBehaviour
     public void SuperJump()
     {
         anim.SetTrigger("SuperJump");
+        isSuperJump = true;
 
         playerController.playerCollider.isTrigger = true;
         rb.velocity = new Vector2(rb.velocity.x, jumpPower * 1.5f);
@@ -48,6 +49,7 @@ public class JumpController : MonoBehaviour
 
     public void PreventJump()
     {
+        if (isSuperJump) return;
         rb.velocity = Vector2.zero;
     }
 
@@ -55,6 +57,7 @@ public class JumpController : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         playerController.playerCollider.isTrigger = false;
+        isSuperJump=false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -7,6 +7,7 @@ public class StageSlider : MonoBehaviour
 {
     #region SerializeField
     [SerializeField] Slider slider_stage;
+    [SerializeField] GameController gameController;
     #endregion
 
     private void Start()
@@ -20,7 +21,8 @@ public class StageSlider : MonoBehaviour
 
         if (slider_stage.value == 1)
         {
-            Debug.Log("게임 클리어");
+            gameController.PauseGame();
+            gameController.SetText("Clear!");
         }
     }
 }
