@@ -8,20 +8,19 @@ public class Block : MonoBehaviour
     #region SerializeField
     [SerializeField] float maxHealth; //블럭의 최대 체력
     [SerializeField] float health; // 블럭의 체력
-    //[SerializeField] int jumpPower;
+    [SerializeField] float speed; // 이동 속도
     [SerializeField] ParticleSystem p_explosionParticle; // 블럭이 삭제될때 사용되는 파티클
     [SerializeField] GameObject p_damageText; // 받은 공격력을 출력하는 텍스트
     #endregion
 
     #region private
-    Rigidbody2D rb;
     Vector2 originPos;
     BlockController blockController;
     #endregion
 
-    private void Start()
+    private void Update()
     {
-        rb = GetComponent<Rigidbody2D>();
+        transform.Translate(Vector2.down * speed * Time.deltaTime);
     }
 
     // (오브젝트 풀링) 블럭 생성
@@ -43,7 +42,6 @@ public class Block : MonoBehaviour
     {
         health -= damage;
 
-        //rb.velocity = new Vector2(rb.velocity.x, jumpPower);
         ShowDamage(damage);
 
         if (health <= 0)
