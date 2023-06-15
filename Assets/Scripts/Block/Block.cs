@@ -18,6 +18,7 @@ public class Block : MonoBehaviour
     #region private
     Vector2 originPos;
     BlockController blockController;
+    Animator anim;
     #endregion
 
     #region public
@@ -55,6 +56,7 @@ public class Block : MonoBehaviour
     {
         this.blockController = blockController;
         scoreController = GameObject.Find("GameManager").GetComponent<ScoreController>();
+        anim = GetComponent<Animator>();
 
         // 오브젝트 활성화
         gameObject.SetActive(false);
@@ -73,6 +75,8 @@ public class Block : MonoBehaviour
     {
         health -= damage;
 
+        //애니메이션
+        anim.SetTrigger("Hit");
         ShowDamage(damage);
 
         if (health <= 0)
@@ -90,6 +94,7 @@ public class Block : MonoBehaviour
 
         //파티클 생성
         Instantiate(p_explosionParticle, transform.position, Quaternion.identity);
+
 
         //초기화
         health = maxHealth;

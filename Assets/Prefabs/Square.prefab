@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7367405586979977378}
   - component: {fileID: 293691340448771034}
   - component: {fileID: 293691340448771033}
+  - component: {fileID: 701644970808650397}
   m_Layer: 0
   m_Name: Square
   m_TagString: Block
@@ -51,6 +52,8 @@ MonoBehaviour:
   speed: 3
   p_explosionParticle: {fileID: 3861788497379656130, guid: 2942e104e82079e488cd82e030a9e9b0, type: 3}
   p_damageText: {fileID: 4501086024673575283, guid: ec973ae94654d584aa27d92c7c50df86, type: 3}
+  scoreController: {fileID: 0}
+  isFalling: 1
 --- !u!212 &293691340448771034
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -129,3 +132,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1.05}
   m_EdgeRadius: 0
+--- !u!95 &701644970808650397
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293691340448771039}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 689faf04a36655c49ad47c397f8bf0a9, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
