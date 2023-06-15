@@ -84,8 +84,9 @@ public class Block : MonoBehaviour
     // 죽음
     public void DestroyBlock()
     {
-        //점수 증가
+        //점수&코인 증가
         scoreController.IncreaseScore((int)maxHealth);
+        scoreController.IncreaseCoin((int)maxHealth / 10);
 
         //파티클 생성
         Instantiate(p_explosionParticle, transform.position, Quaternion.identity);
