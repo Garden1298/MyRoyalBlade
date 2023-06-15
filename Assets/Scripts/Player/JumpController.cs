@@ -53,7 +53,7 @@ public class JumpController : MonoBehaviour
 
     private IEnumerator IsTriggerOff()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         playerController.playerCollider.isTrigger = false;
     }
 
