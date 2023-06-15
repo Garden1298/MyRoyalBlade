@@ -6,6 +6,7 @@ public class HealthController : MonoBehaviour
 {
     #region SerializeField
     [SerializeField] GameObject[] hearts; // 플레이어의 생명 수
+    [SerializeField] GuardController guardController;
     #endregion
 
     #region private
@@ -19,6 +20,8 @@ public class HealthController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (guardController.isGuard) return;
+
         if (collision.gameObject.tag == "Block")
         {
             if (health <= 0) return;
@@ -27,7 +30,7 @@ public class HealthController : MonoBehaviour
 
             // 제일 마지막 하트를 비활성화 시킨다.
             GameObject heart = hearts[health];
-            heart.SetActive(false); 
+            heart.SetActive(false);
 
             // 마지막으로 남은 하트였다면 게임 오버
             if (health <= 0)

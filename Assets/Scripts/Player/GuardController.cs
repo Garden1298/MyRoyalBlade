@@ -6,6 +6,11 @@ public class GuardController : MonoBehaviour
 {
     #region SerializeField
     [SerializeField] GameObject guard;
+    [SerializeField] JumpController jumpController;
+    #endregion
+
+    #region public
+    public bool isGuard; // 가드 사용 유무
     #endregion
 
     private void Start()
@@ -17,12 +22,14 @@ public class GuardController : MonoBehaviour
     public void AttachGuard()
     {
         guard.SetActive(true);
+        isGuard = true;
     }
 
     // 쉴드 해제
     public void DetachGuard()
     {
         guard.SetActive(false);
+        isGuard = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -30,6 +37,7 @@ public class GuardController : MonoBehaviour
         if(collision.gameObject.tag == "Block")
         {
             BlockController.Instance.HitShield();
+            jumpController.PreventJump();
             DetachGuard();
         }
     }

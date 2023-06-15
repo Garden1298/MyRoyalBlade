@@ -903,6 +903,7 @@ MonoBehaviour:
   - {fileID: 647363448}
   - {fileID: 2049477543}
   - {fileID: 2007549770}
+  guardController: {fileID: 1814005844}
 --- !u!1 &251510774
 GameObject:
   m_ObjectHideFlags: 0
@@ -7517,7 +7518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 187818088}
   meleeSpeed: 0.35
-  damage: 50
+  damage: 100
 --- !u!50 &708683781
 Rigidbody2D:
   serializedVersion: 4
@@ -13735,6 +13736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guard: {fileID: 1814005841}
+  isGuard: 0
 --- !u!212 &1814005845
 SpriteRenderer:
   m_ObjectHideFlags: 0

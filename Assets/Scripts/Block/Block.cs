@@ -35,15 +35,15 @@ public class Block : MonoBehaviour
             transform.Translate(Vector2.up * speed * Time.deltaTime);
             StartCoroutine(StartTranslationDown());
         }
-
     }
 
+    // 쉴드에 닿음
     public void HitShield()
     {
-        Debug.Log("block:hitShield");
         isFalling = false;
     }
 
+    // 쉴드 능력 해제
     private IEnumerator StartTranslationDown()
     {
         yield return new WaitForSeconds(0.5f);
@@ -79,8 +79,6 @@ public class Block : MonoBehaviour
         {
             DestroyBlock();
         }
-
-        Debug.Log(health);
     }
 
     // 데미지 출력

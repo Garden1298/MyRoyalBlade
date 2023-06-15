@@ -28,7 +28,6 @@ public class JumpController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Jump();
-
         }
     }
 
@@ -45,6 +44,11 @@ public class JumpController : MonoBehaviour
         playerController.playerCollider.isTrigger = true;
         rb.velocity = new Vector2(rb.velocity.x, jumpPower * 1.5f);
         StartCoroutine(IsTriggerOff());
+    }
+
+    public void PreventJump()
+    {
+        rb.velocity = Vector2.zero;
     }
 
     private IEnumerator IsTriggerOff()
