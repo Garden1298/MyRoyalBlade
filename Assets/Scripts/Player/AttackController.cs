@@ -43,6 +43,10 @@ public class AttackController : MonoBehaviour
         anim.SetTrigger("SuperAttack");
         superAttackArea.SetActive(true);
         doAttack = true;
+
+        //카메라 흔들기
+        CinemachineShake.instance.ShakeCamera(4f, 0.5f);
+
         StartCoroutine(SuperAttackOff());
     }
 

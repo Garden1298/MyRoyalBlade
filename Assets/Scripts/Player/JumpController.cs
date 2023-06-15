@@ -42,6 +42,9 @@ public class JumpController : MonoBehaviour
         anim.SetTrigger("SuperJump");
         isSuperJump = true;
 
+        //카메라 흔들기
+        CinemachineShake.instance.ShakeCamera(4f, 0.5f);
+
         playerController.playerCollider.isTrigger = true;
         rb.velocity = new Vector2(rb.velocity.x, jumpPower * 1.5f);
         StartCoroutine(IsTriggerOff());
