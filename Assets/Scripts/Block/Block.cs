@@ -10,6 +10,7 @@ public class Block : MonoBehaviour
     [SerializeField] float health; // 블럭의 체력
     [SerializeField] float speed; // 이동 속도
     [SerializeField] ParticleSystem p_explosionParticle; // 블럭이 삭제될때 사용되는 파티클
+    [SerializeField] ParticleSystem p_coinParticle; // 블럭이 삭제될때 사용되는 파티클
     [SerializeField] GameObject p_damageText; // 받은 공격력을 출력하는 텍스트
     [SerializeField] ScoreController scoreController; // 점수 컨트롤러
     #endregion
@@ -94,7 +95,7 @@ public class Block : MonoBehaviour
 
         //파티클 생성
         Instantiate(p_explosionParticle, transform.position, Quaternion.identity);
-
+        Instantiate(p_coinParticle, transform.position, Quaternion.identity);
 
         //초기화
         health = maxHealth;

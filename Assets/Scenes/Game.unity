@@ -981,7 +981,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce603b9bba5fa0e458da167ab083a89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 187818088}
   jumpPower: 10
   playerController: {fileID: 0}
 --- !u!4 &187818087
@@ -8129,7 +8128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3ea0d398c6317248bef4c273982227d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 187818088}
   meleeSpeed: 0.35
   damage: 100
   superAttackArea: {fileID: 1955988584}

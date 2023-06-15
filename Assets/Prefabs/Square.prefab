@@ -51,6 +51,7 @@ MonoBehaviour:
   health: 100
   speed: 3
   p_explosionParticle: {fileID: 3861788497379656130, guid: 2942e104e82079e488cd82e030a9e9b0, type: 3}
+  p_coinParticle: {fileID: 822025693984626644, guid: 16b0b01204b38a041890a0049191a8d3, type: 3}
   p_damageText: {fileID: 4501086024673575283, guid: ec973ae94654d584aa27d92c7c50df86, type: 3}
   scoreController: {fileID: 0}
   isFalling: 1
