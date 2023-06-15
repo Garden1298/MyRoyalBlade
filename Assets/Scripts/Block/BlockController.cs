@@ -29,6 +29,7 @@ public class BlockController : MonoBehaviour
     Queue<Block> curBlock = new Queue<Block>();
     Quaternion QI = Quaternion.identity;
     int leftBlockCnt = 0;
+    int stage = 0;
     #endregion
 
     #region public
@@ -71,8 +72,8 @@ public class BlockController : MonoBehaviour
     // level에 따른 블럭 생성
     private void StartLevel()
     {
-        int stage = PlayerPrefs.GetInt("Stage", 0);
         int curCount = UnityEngine.Random.Range(6, 8) + stage;
+        curCount = Mathf.Clamp(curCount, 6, count);
 
         for (int i = 0; i < curCount; i++)
         {
@@ -114,6 +115,7 @@ public class BlockController : MonoBehaviour
         {
             Debug.Log("level start");
             StartLevel();
+            stage++;
         }
     }
 }
