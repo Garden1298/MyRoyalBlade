@@ -39,7 +39,7 @@ public class JumpController : MonoBehaviour
 
     public void SuperJump()
     {
-        anim.SetTrigger("Jump");
+        anim.SetTrigger("SuperJump");
 
         playerController.playerCollider.isTrigger = true;
         rb.velocity = new Vector2(rb.velocity.x, jumpPower * 1.5f);
