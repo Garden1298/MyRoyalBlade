@@ -707,6 +707,7 @@ GameObject:
   - component: {fileID: 187818090}
   - component: {fileID: 187818086}
   - component: {fileID: 187818089}
+  - component: {fileID: 187818091}
   - component: {fileID: 187818085}
   - component: {fileID: 187818084}
   - component: {fileID: 187818083}
@@ -901,6 +902,22 @@ MonoBehaviour:
   playerController: {fileID: 187818090}
   playerCollider: {fileID: 187818084}
   anim: {fileID: 0}
+--- !u!114 &187818091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 187818082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd8a5ddc0c43a540a5177d321bf1212, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hearts:
+  - {fileID: 647363448}
+  - {fileID: 2049477543}
+  - {fileID: 2007549770}
 --- !u!1 &251510774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1334,7 +1351,7 @@ GameObject:
   - component: {fileID: 357665124}
   - component: {fileID: 357665123}
   m_Layer: 5
-  m_Name: Text_Coin
+  m_Name: Text_Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1663,7 +1680,7 @@ GameObject:
   - component: {fileID: 479657611}
   - component: {fileID: 479657610}
   m_Layer: 5
-  m_Name: Image_Coin
+  m_Name: Image_Diamond
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7097,6 +7114,7 @@ GameObject:
   - component: {fileID: 586698792}
   - component: {fileID: 586698793}
   - component: {fileID: 586698795}
+  - component: {fileID: 586698796}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -7154,6 +7172,21 @@ MonoBehaviour:
   jumpController: {fileID: 187818086}
   btn_Attack: {fileID: 157536967}
   attackController: {fileID: 187818089}
+--- !u!114 &586698796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 586698791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 485740dcf98d7e442ad295b426f9e62b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  text_score: {fileID: 319341371}
+  text_coin: {fileID: 900244935}
+  text_diamond: {fileID: 357665123}
 --- !u!1 &647363448
 GameObject:
   m_ObjectHideFlags: 0

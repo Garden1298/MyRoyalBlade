@@ -11,6 +11,7 @@ public class Block : MonoBehaviour
     [SerializeField] float speed; // 이동 속도
     [SerializeField] ParticleSystem p_explosionParticle; // 블럭이 삭제될때 사용되는 파티클
     [SerializeField] GameObject p_damageText; // 받은 공격력을 출력하는 텍스트
+    [SerializeField] ScoreController scoreController; // 점수 컨트롤러
     #endregion
 
     #region private
@@ -27,7 +28,11 @@ public class Block : MonoBehaviour
     public void Create(BlockController blockController)
     {
         this.blockController = blockController;
+        scoreController = GameObject.Find("GameManager").GetComponent<ScoreController>();
+
+        // 오브젝트 활성화
         gameObject.SetActive(false);
+        // 시작 위치 저장
         originPos = this.transform.position;
     }
 
@@ -50,6 +55,7 @@ public class Block : MonoBehaviour
         }
     }
 
+    // 데미지 출력
     private void ShowDamage(float damage)
     {
         // 데미지 텍스트 생성
@@ -57,9 +63,12 @@ public class Block : MonoBehaviour
         text.GetComponent<TMP_Text>().text = damage.ToString();
     }
 
-    //죽음
+    // 죽음
     public void DestroyBlock()
     {
+        //점수 증가
+        scoreController.IncreaseScore((int)maxHealth);
+
         //파티클 생성
         Instantiate(p_explosionParticle, transform.position, Quaternion.identity);
 
