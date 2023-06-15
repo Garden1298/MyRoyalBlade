@@ -6,7 +6,6 @@ using UnityEngine;
 public class JumpController : MonoBehaviour
 {
     #region SerializeField
-    [SerializeField] Animator anim;
     [SerializeField] int jumpPower; // 점프 가중치
     [SerializeField] PlayerController playerController;
     #endregion
@@ -33,13 +32,15 @@ public class JumpController : MonoBehaviour
 
     public void Jump()
     {
-        anim.SetTrigger("Jump");
+        //애니메이션
+        PlayerController.Instance.anim.SetTrigger("Jump");
         rb.velocity = new Vector2(rb.velocity.x, jumpPower);
     }
 
     public void SuperJump()
     {
-        anim.SetTrigger("SuperJump");
+        //애니메이션
+        PlayerController.Instance.anim.SetTrigger("SuperJump");
         isSuperJump = true;
 
         //카메라 흔들기

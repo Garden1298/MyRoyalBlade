@@ -5,7 +5,6 @@ using UnityEngine;
 public class AttackController : MonoBehaviour
 {
     #region SerializeField
-    [SerializeField] Animator anim;
     [SerializeField] float meleeSpeed;
     [SerializeField] float damage;
     [SerializeField] GameObject superAttackArea;
@@ -34,13 +33,17 @@ public class AttackController : MonoBehaviour
 
     public void Attack()
     {
-        anim.SetTrigger("Attack");
+        //애니메이션
+        PlayerController.Instance.anim.SetTrigger("Attack");
+
         doAttack = true;
     }
 
     public void SuperAttack()
     {
-        anim.SetTrigger("SuperAttack");
+        //애니메이션
+        PlayerController.Instance.anim.SetTrigger("SuperAttack");
+
         superAttackArea.SetActive(true);
         doAttack = true;
 

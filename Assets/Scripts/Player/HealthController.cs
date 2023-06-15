@@ -37,6 +37,9 @@ public class HealthController : MonoBehaviour
             //카메라 흔들기
             CinemachineShake.instance.ShakeCamera(5f,0.1f);
 
+            //애니메이션
+            PlayerController.Instance.anim.SetTrigger("Hit");
+
             // 마지막으로 남은 하트였다면 게임 오버
             if (health <= 0)
             {
