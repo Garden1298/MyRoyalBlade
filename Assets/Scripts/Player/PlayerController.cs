@@ -16,6 +16,18 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region public
+
+    public struct State
+    {
+        public bool idle;
+        public bool jump;
+        public bool superJump;
+        public bool attack;
+        public bool superAttack;
+        public bool hurt;
+        public bool land;
+    }
+
     public bool isOnGround;
     public PlayerController playerController;
     public BoxCollider2D playerCollider;
